@@ -12,8 +12,7 @@ Group:		Applications/System
 Source0:	http://dl.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
 # Source0-md5:	348bbc20f42b9d7dae4b08590649098b
 URL:		http://hpinkjet.sourceforge.net/
-#Patch0:		%{name}-ac_fixes.patch
-#Patch1:		%{name}-DESTDIR.patch
+Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
@@ -48,8 +47,8 @@ Summary:	PPD database for Hewlett Packard printers
 Summary(pl):	Baza danych PPD dla drukarek Hewlett Packard
 Group:		Applications/System
 # to be changed, what owns that dir???
-Obsoletes:	hpijs-foomatic
 Requires:	cups
+Obsoletes:	hpijs-foomatic
 
 %description ppd
 PPD database for Hewlett Packard printers.
@@ -59,11 +58,9 @@ Baza danych PPD dla drukarek Hewlett Packard.
 
 %prep
 %setup -q
-#%%patch0 -p1
-#%%patch1 -p1 -b .wiget
+%patch0 -p1
 
 %build
-rm -f missing
 %{__aclocal}
 %{__autoconf}
 %{__automake}
@@ -81,7 +78,8 @@ install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 
 %endif
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %if 0%{!?_without_cups:1}
 rm -f $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
