@@ -5,15 +5,15 @@
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
-Version:	1.4.1
-Release:	1
+Version:	1.5
+Release:	1.1
 License:	BSD
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
-# Source0-md5:	fff91a62e0917a5fac6111f524ed7d21
+# Source0-md5:	348bbc20f42b9d7dae4b08590649098b
 URL:		http://hpinkjet.sourceforge.net/
-Patch0:		%{name}-ac_fixes.patch
-Patch1:		%{name}-DESTDIR.patch
+#Patch0:		%{name}-ac_fixes.patch
+#Patch1:		%{name}-DESTDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
@@ -59,8 +59,8 @@ Baza danych PPD dla drukarek Hewlett Packard.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1 -b .wiget
+#%%patch0 -p1
+#%%patch1 -p1 -b .wiget
 
 %build
 rm -f missing
