@@ -1,7 +1,7 @@
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
-Version:	1.2
+Version:	1.2.1
 Release:	1
 License:	BSD
 Group:		Applications/System
@@ -36,7 +36,7 @@ jako sterownik dla drukarek atramentowych DeskJet.
 
 %build
 rm -f missing
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
