@@ -9,7 +9,7 @@ Version:	1.7.1
 Release:	1
 License:	BSD
 Group:		Applications/System
-Source0:	http://mesh.dl.sourceforge.net/sourceforge/hpinkjet/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
 # Source0-md5:	cba40858e27204db0211c559bd606aaa
 URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
@@ -34,7 +34,7 @@ deskjet printer driver.
 %description -l pl
 Serwer Hewlett-Packard Inkjet jest serwerem raster-do-pcl lub jako
 koproces bazowany na Hewlett Packard Appliance Printing Development
-Kit z http://hpapdk.com/. Serwer jest u¿ywany wraz z Ghostscript'em
+Kit z http://hpapdk.com/. Serwer jest u¿ywany wraz z Ghostscriptem
 jako sterownik dla drukarek atramentowych DeskJet.
 
 %package ppd
