@@ -1,0 +1,36 @@
+--- hpijs-1.0.2/configure.in~	Thu Jan 17 03:53:40 2002
++++ hpijs-1.0.2/configure.in	Tue Feb  5 07:39:54 2002
+@@ -10,11 +10,11 @@
+ AC_PROG_INSTALL
+ 
+ dnl Checks for libraries.
++AC_CHECK_LIB(m, pow)
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS(fcntl.h malloc.h syslog.h unistd.h)
+-AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
+@@ -30,20 +30,6 @@
+ -DAPDK_APOLLO2XXX -DAPDK_APOLLO21XX -DAPDK_APOLLO2560 -DAPDK_DJ600 \
+ -DAPDK_DJ350 -DAPDK_DJ8x5 -DAPDK_PSP100 -DAPDK_AUTODUPLEX"
+ 
+-AC_MSG_CHECKING("which type of build")
+-AC_ARG_ENABLE(debug,
+- [  --enable-debug             enable debug mode [default=no]],
+- enable_debug=$enableval, enable_debug=no)
+-if test $enable_debug = yes; then
+-   CFLAGS="-g -Wall"
+-   CXXFLAGS="-g -Wall"
+-   AC_MSG_RESULT(debug)
+-else
+-   CFLAGS="-O2 -Wall"
+-   CXXFLAGS="-O2 -Wall"
+-   AC_MSG_RESULT(release)
+-fi
+-
+ CXXFLAGS="$CXXFLAGS $MYFLAGS"
+ 
+ dnl Checks for library functions.
