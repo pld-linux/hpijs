@@ -17,8 +17,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_cups:BuildRequires:	cups-devel}
 BuildRequires:	libstdc++-devel
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
 %if %{_gcc_ver} == 2
