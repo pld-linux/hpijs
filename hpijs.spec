@@ -7,7 +7,7 @@ License:	BSD (HP Products Only)
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
-Source0:	http://hpinkjet.sourceforge.net/%{name}%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/hpinkjet/%{name}%{version}.tar.gz
 Patch0:		%{name}-make-flags.patch
 URL:		http://hpinkjet.sourceforge.net/
 BuildRequires:	libstdc++-devel
