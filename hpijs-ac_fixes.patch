@@ -1,11 +1,7 @@
---- hpijs-1.0.2/configure.in~	Thu Jan 17 03:53:40 2002
-+++ hpijs-1.0.2/configure.in	Tue Feb  5 07:39:54 2002
-@@ -10,11 +10,11 @@
- AC_PROG_INSTALL
- 
- dnl Checks for libraries.
-+AC_CHECK_LIB(m, pow)
- 
+diff -Nur hpijs-1.2/configure.in hpijs-1.2.new/configure.in
+--- hpijs-1.2/configure.in	Thu Jul 11 20:31:56 2002
++++ hpijs-1.2.new/configure.in	Fri Aug  9 12:54:39 2002
+@@ -14,7 +14,6 @@
  dnl Checks for header files.
  AC_HEADER_STDC
  AC_CHECK_HEADERS(fcntl.h malloc.h syslog.h unistd.h)
@@ -13,22 +9,26 @@
  
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
-@@ -30,20 +30,6 @@
- -DAPDK_APOLLO2XXX -DAPDK_APOLLO21XX -DAPDK_APOLLO2560 -DAPDK_DJ600 \
- -DAPDK_DJ350 -DAPDK_DJ8x5 -DAPDK_PSP100 -DAPDK_AUTODUPLEX"
+@@ -32,24 +31,6 @@
+ -DAPDK_HIGH_RES_MODES -DAPDK_LJMONO -DAPDK_DJ540 -DAPDK_DJ850 \
+ -DAPDK_DJ890"
  
 -AC_MSG_CHECKING("which type of build")
--AC_ARG_ENABLE(debug,
-- [  --enable-debug             enable debug mode [default=no]],
-- enable_debug=$enableval, enable_debug=no)
--if test $enable_debug = yes; then
--   CFLAGS="-g -Wall"
--   CXXFLAGS="-g -Wall"
--   AC_MSG_RESULT(debug)
+-if test "$GCC" = yes; then
+-   AC_ARG_ENABLE(debug,
+-     [  --enable-debug             enable debug mode [default=no]],
+-     enable_debug=$enableval, enable_debug=no)
+-   if test $enable_debug = yes; then
+-      CFLAGS="-g -Wall"
+-      CXXFLAGS="-g -Wall"
+-      AC_MSG_RESULT(debug)
+-   else
+-      CFLAGS="-O2 -Wall"
+-      CXXFLAGS="-O2 -Wall"
+-      AC_MSG_RESULT(release)
+-   fi
 -else
--   CFLAGS="-O2 -Wall"
--   CXXFLAGS="-O2 -Wall"
--   AC_MSG_RESULT(release)
+-   AC_MSG_RESULT("$CXXFLAGS")   
 -fi
 -
  CXXFLAGS="$CXXFLAGS $MYFLAGS"
