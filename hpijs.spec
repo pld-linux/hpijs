@@ -26,6 +26,9 @@ Conflicts:	ghostscript <= 7.00-3
 %define		__cxx		"%{__cc}"
 %endif
 
+%define 	_cupsdir 	%(cups-config --datadir)
+%define		_cupsppddir	%{_cupsdir}/model
+
 %description
 The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
 coprocess based on the Hewlett Packard Appliance Printing Development
@@ -38,18 +41,19 @@ koproces bazowany na Hewlett Packard Appliance Printing Development
 Kit z http://hpapdk.com/. Serwer jest u¿ywany wraz z Ghostscript'em
 jako sterownik dla drukarek atramentowych DeskJet.
 
-%package foomatic
+%package ppd
 Summary:	PPD database for Hewlett Packard printers
 Summary(pl):	Baza danych PPD dla drukarek Hewlett Packard
 Group:		Applications/System
 # to be changed, what owns that dir???
-Requires:	%{_datadir}/ppd
+Obsoletes:	hpijs-foomatic
+Requires: 	cups
 
-%description foomatic
-PPD database for Hewlett Packard printers to use with foomatic.
+%description ppd
+PPD database for Hewlett Packard printers.
 
-%description foomatic -l pl
-Baza danych PPD dla drukarek Hewlett Packard do u¿ywania z foomatic.
+%description ppd -l pl
+Baza danych PPD dla drukarek Hewlett Packard.
 
 %prep
 %setup -q
@@ -72,9 +76,17 @@ rm -rf $RPM_BUILD_ROOT
 %if 0%{!?_without_cups:1}
 install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 	$RPM_BUILD_ROOT$(cups-config --serverbin)/filter
+
 %endif
 
+
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+%if 0%{!?_without_cups:1}
+rm $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
+mv $RPM_BUILD_ROOT{%{_datadir}/ppd/HP/*,%{_cupsppddir}}
+%endif
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -84,6 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc hpijs_readme.html
 %attr(755,root,root) %{_bindir}/hpijs
 
-%files foomatic
+%if 0%{!?_without_cups:1}
+%files ppd
 %defattr(644,root,root,755)
-%{_datadir}/ppd/HP
+%{_cupsppddir}/*
+%endif
