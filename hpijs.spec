@@ -1,3 +1,7 @@
+#
+# Conditional build:
+# _without_cups		- without CUPS support
+#
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
@@ -13,8 +17,7 @@ Patch1:		%{name}-DESTDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
-# think about this...
-BuildRequires:	cups-devel
+%{!?_without_cups:BuildRequires:	cups-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
 
@@ -35,6 +38,19 @@ koproces bazowany na Hewlett Packard Appliance Printing Development
 Kit z http://hpapdk.com/. Serwer jest u¿ywany wraz z Ghostscript'em
 jako sterownik dla drukarek atramentowych DeskJet.
 
+%package foomatic
+Summary:	PPD database for Hewlett Packard printers
+Summary(pl):	Baza danych PPD dla drukarek Hewlett Packard
+Group:		Applications/System
+# to be changed, what owns that dir???
+Requires:	%{_datadir}/ppd
+
+%description foomatic
+PPD database for Hewlett Packard printers to use with foomatic.
+
+%description foomatic -l pl
+Baza danych PPD dla drukarek Hewlett Packard do u¿ywania z foomatic.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -48,13 +64,15 @@ rm -f missing
 CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
 %configure \
 	--enable-foomatic-install \
-	--enable-cups-install
+	%{?_without_cups:--disable-cups-install}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+%if 0%{!?_without_cups:1}
 install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 	$RPM_BUILD_ROOT$(cups-config --serverbin)/filter
+%endif
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
@@ -65,5 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc hpijs_readme.html
 %attr(755,root,root) %{_bindir}/hpijs
-# move this to foomatic subpackage ?
+
+%files foomatic
+%defattr(644,root,root,755)
 %{_datadir}/ppd/HP
