@@ -1,17 +1,20 @@
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
-Version:	1.3.1
+Version:	1.4.1
 Release:	1
 License:	BSD
 Group:		Applications/System
-Source0:	http://belnet.dl.sourceforge.net/sourceforge/hpinkjet/%{name}-%{version}.tar.gz
-# Source0-md5: a2ae6ce240dd40747ea0e3731c549f81
+Source0:	http://dl.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
+# Source0-md5:	fff91a62e0917a5fac6111f524ed7d21
 URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
+Patch1:		%{name}-DESTDIR.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
+# think about this...
+BuildRequires:	cups-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
 
@@ -35,6 +38,7 @@ jako sterownik dla drukarek atramentowych DeskJet.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1 -b .wiget
 
 %build
 rm -f missing
@@ -42,11 +46,15 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
-%configure
+%configure \
+	--enable-foomatic-install \
+	--enable-cups-install
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
+	$RPM_BUILD_ROOT$(cups-config --serverbin)/filter
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
@@ -57,3 +65,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc hpijs_readme.html
 %attr(755,root,root) %{_bindir}/hpijs
+# move this to foomatic subpackage ?
+%{_datadir}/ppd/HP
