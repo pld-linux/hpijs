@@ -15,8 +15,8 @@ URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libstdc++-devel
 %{!?_without_cups:BuildRequires:	cups-devel}
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
 
@@ -76,7 +76,6 @@ rm -rf $RPM_BUILD_ROOT
 %if 0%{!?_without_cups:1}
 install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 	$RPM_BUILD_ROOT$(cups-config --serverbin)/filter
-
 %endif
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
