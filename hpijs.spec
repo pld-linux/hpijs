@@ -7,6 +7,7 @@ Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
 Source0:	http://hpinkjet.sourceforge.net/%{name}%{version}.tar.gz
+Patch0:		%{name}-make-flags.patch
 URL:		http://hpinkjet.sourceforge.net/
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -14,7 +15,6 @@ Conflicts:	ghostscript <= 7.00-3
 
 %define         _prefix		/usr
 %define		_bindir		%{_prefix}/bin
-%define		_docdir		%{_prefix}/share/doc
 
 %description
 The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
@@ -24,9 +24,10 @@ deskjet printer driver.
 
 %prep
 %setup -q -n hpijs%{version}
+%patch0 -p1
 
 %build
-%{__make}
+%{__make} BUILD_FLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
