@@ -6,6 +6,7 @@ Release:	1
 License:	BSD
 Group:		Applications/System
 Source0:	http://belnet.dl.sourceforge.net/sourceforge/hpinkjet/%{name}-%{version}.tar.gz
+# Source0-md5: a2ae6ce240dd40747ea0e3731c549f81
 URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
