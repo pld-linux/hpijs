@@ -10,6 +10,7 @@ URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
 
