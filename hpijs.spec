@@ -1,7 +1,7 @@
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
-Version:	1.0.2
+Version:	1.0.4
 Release:	1
 License:	BSD
 Group:		Applications/Graphics
@@ -12,6 +12,8 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
+
+%define		__cxx		%{__cc}
 
 %description
 The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
@@ -34,7 +36,6 @@ rm -f missing
 aclocal
 autoconf
 automake -a -c -f
-CXX=%{__cc}; export CXX
 CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
 %configure
 %{__make}
