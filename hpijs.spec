@@ -13,7 +13,10 @@ BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
 
-%define		__cxx		%{__cc}
+%define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
+%if %{_gcc_ver} == 2
+%define		__cxx		"%{__cc}"
+%endif
 
 %description
 The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
