@@ -1,0 +1,38 @@
+--- hpijs-1.4.1/Makefile.am.wiget	2003-05-28 21:42:47.000000000 +0200
++++ hpijs-1.4.1/Makefile.am	2003-06-13 11:40:10.031511799 +0200
+@@ -54,23 +54,23 @@
+ uninstall-hook: $(unfoomatichook) $(uncupshook)
+ 
+ install-foomatic:
+-	mkdir -p $(ppddir)
+-	rm -f $(ppddir)/HP*hpijs*.ppd*
+-	cp -ax ppd/* $(ppddir)
+-	gzip -f $(ppddir)/*
++	mkdir -p $(DESTDIR)$(ppddir)
++	rm -f $(DESTDIR)$(ppddir)/HP*hpijs*.ppd*
++	cp -ax ppd/* $(DESTDIR)$(ppddir)
++	gzip -f $(DESTDIR)$(ppddir)/*
+ 
+ uninstall-foomatic:
+-	rm -f $(ppddir)/HP*hpijs*.ppd*
++	rm -f $(DESTDIR)$(ppddir)/HP*hpijs*.ppd*
+ 
+ install-cups:
+-	rm -f $(CUPS_PPD_PATH)/HP*hpijs*.ppd* $(CUPS_PPD_PATH)/foomatic/HP/HP*hpijs*.ppd*
+-	rm -f $(CUPS_PPD_PATH)/foomatic-ppds
+-	ln -s $(datadir)/ppd $(CUPS_PPD_PATH)/foomatic-ppds
+-	rm -f $(CUPS_FILTER_PATH)/foomatic-rip
+-	ln -s $(bindir)/foomatic-rip $(CUPS_FILTER_PATH)/foomatic-rip
++	rm -f $(DESTDIR)$(CUPS_PPD_PATH)/HP*hpijs*.ppd* $(DESTDIR)$(CUPS_PPD_PATH)/foomatic/HP/HP*hpijs*.ppd*
++	rm -f $(DESTDIR)$(CUPS_PPD_PATH)/foomatic-ppds
++	ln -s $(datadir)/ppd $(DESTDIR)$(CUPS_PPD_PATH)/foomatic-ppds
++	rm -f $(DESTDIR)$(CUPS_FILTER_PATH)/foomatic-rip
++	ln -s $(bindir)/foomatic-rip $(DESTDIR)$(CUPS_FILTER_PATH)/foomatic-rip
+ 
+ uninstall-cups:
+-	rm -f $(CUPS_PPD_PATH)/foomatic-ppds
+-	rm -f $(CUPS_FILTER_PATH)/foomatic-rip
++	rm -f $(DESTDIR)$(CUPS_PPD_PATH)/foomatic-ppds
++	rm -f $(DESTDIR)$(CUPS_FILTER_PATH)/foomatic-rip
+ 
+ 
