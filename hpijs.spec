@@ -6,7 +6,7 @@ Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
 Version:	1.6.1
-Release:	2
+Release:	3
 License:	BSD
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
@@ -85,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc hpijs_readme.html
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/hpijs
 
 %if %{with cups}
 %files ppd
