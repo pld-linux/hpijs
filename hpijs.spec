@@ -84,7 +84,7 @@ install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 %if 0%{!?_without_cups:1}
-rm $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
+rm -f $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
 mv $RPM_BUILD_ROOT{%{_datadir}/ppd/HP/*,%{_cupsppddir}}
 %endif
 
