@@ -1,4 +1,5 @@
 Summary:	HP Inkjet Server
+Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
 Version:	0.97
 Release:	1
@@ -21,6 +22,12 @@ The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
 coprocess based on the Hewlett Packard Appliance Printing Development
 Kit at http://hpapdk.com. The server is used with Ghostscript as
 deskjet printer driver.
+
+%description -l pl
+Serwer Hewlett-Packard Inkjet jest serwerem raster-do-pcl lub jako
+koproces bazowany na Hewlett Packard Appliance Printing Development
+Kit z http://hpapdk.com. Serwer jest u¿ywany wraz z Ghostscript'em
+jako sterownik dla drukarek atramentowych DeskJet.
 
 %prep
 %setup -q -n hpijs%{version}
