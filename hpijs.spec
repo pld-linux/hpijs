@@ -1,11 +1,11 @@
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
-Version:	1.0.4
+Version:	1.1
 Release:	1
 License:	BSD
 Group:		Applications/Graphics
-Source0:	http://prdownloads.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
+Source0:	http://belnet.dl.sourceforge.net/sourceforge/hpinkjet/%{name}-%{version}.tar.gz
 URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
