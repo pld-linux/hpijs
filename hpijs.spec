@@ -5,11 +5,6 @@ Version:	1.0.2
 Release:	1
 License:	BSD
 Group:		Applications/Graphics
-Group(de):	Applikationen/Graphiken
-Group(es):	Aplicaciones/Gráficos
-Group(fr):	Applications/Graphiques
-Group(pl):	Aplikacje/Grafika
-Group(pt):	Aplicações/Gráficos
 Source0:	http://prdownloads.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
 URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
