@@ -26,8 +26,10 @@ Conflicts:	ghostscript <= 7.00-3
 %define		__cxx		"%{__cc}"
 %endif
 
+%if 0%{!?_without_cups:1}
 %define 	_cupsdir 	%(cups-config --datadir)
 %define		_cupsppddir	%{_cupsdir}/model
+%endif
 
 %description
 The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
@@ -79,14 +81,12 @@ install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 
 %endif
 
-
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 %if 0%{!?_without_cups:1}
 rm $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
 mv $RPM_BUILD_ROOT{%{_datadir}/ppd/HP/*,%{_cupsppddir}}
 %endif
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
