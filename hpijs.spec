@@ -5,12 +5,12 @@
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
-Version:	1.5
-Release:	5
+Version:	1.6
+Release:	1
 License:	BSD
 Group:		Applications/System
 Source0:	http://dl.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
-# Source0-md5:	348bbc20f42b9d7dae4b08590649098b
+# Source0-md5:	80e6a57796a456d6350e4259ce996b62
 URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
@@ -19,11 +19,6 @@ BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 Conflicts:	ghostscript <= 7.00-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_gcc_ver	%(%{__cc} -dumpversion | cut -b 1)
-%if %{_gcc_ver} == 2
-%define		__cxx		"%{__cc}"
-%endif
 
 %if %{with cups}
 %define 	_cupsdir 	%(cups-config --datadir)
@@ -46,7 +41,6 @@ jako sterownik dla drukarek atramentowych DeskJet.
 Summary:	PPD database for Hewlett Packard printers
 Summary(pl):	Baza danych PPD dla drukarek Hewlett Packard
 Group:		Applications/System
-# to be changed, what owns that dir???
 Requires:	cups
 Obsoletes:	hpijs-foomatic
 
