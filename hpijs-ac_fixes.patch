@@ -1,17 +1,9 @@
-diff -Nur hpijs-1.2/configure.in hpijs-1.2.new/configure.in
---- hpijs-1.2/configure.in	Thu Jul 11 20:31:56 2002
-+++ hpijs-1.2.new/configure.in	Fri Aug  9 12:54:39 2002
-@@ -14,7 +14,6 @@
- dnl Checks for header files.
- AC_HEADER_STDC
- AC_CHECK_HEADERS(fcntl.h malloc.h syslog.h unistd.h)
--AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
- 
- dnl Checks for typedefs, structures, and compiler characteristics.
- AC_C_CONST
-@@ -32,24 +31,6 @@
+diff -Nur hpijs-1.3/configure.in hpijs-1.3.new/configure.in
+--- hpijs-1.3/configure.in	Thu Oct 31 03:52:11 2002
++++ hpijs-1.3.new/configure.in	Sat Dec 21 13:07:22 2002
+@@ -32,23 +32,6 @@
  -DAPDK_HIGH_RES_MODES -DAPDK_LJMONO -DAPDK_DJ540 -DAPDK_DJ850 \
- -DAPDK_DJ890"
+ -DAPDK_DJ890 -DAPDK_DJ3320 -DAPDK_LJCOLOR -DAPDK_DJGENERICVIP"
  
 -AC_MSG_CHECKING("which type of build")
 -if test "$GCC" = yes; then
@@ -30,7 +22,6 @@ diff -Nur hpijs-1.2/configure.in hpijs-1.2.new/configure.in
 -else
 -   AC_MSG_RESULT("$CXXFLAGS")   
 -fi
--
- CXXFLAGS="$CXXFLAGS $MYFLAGS"
  
- dnl Checks for library functions.
+ AC_MSG_CHECKING("for unint32_t")
+ FOUND_TYPE=""
