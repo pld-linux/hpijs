@@ -30,22 +30,14 @@ deskjet printer driver.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_docdir}/hpijs-%{version}}
+install -d $RPM_BUILD_ROOT%{_bindir}
 
 install hpijs $RPM_BUILD_ROOT%{_bindir}
-install hpijs_readme.html $RPM_BUILD_ROOT%{_docdir}/hpijs-%{version}
-install printtool*.jpg $RPM_BUILD_ROOT%{_docdir}/hpijs-%{version}
-install printerdb_append $RPM_BUILD_ROOT%{_docdir}/hpijs-%{version}
-install gs_apdk.jpg $RPM_BUILD_ROOT%{_docdir}/hpijs-%{version}
 
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc hpijs_readme.html printtool*.jpg printerdb_append gs_apdk.jpg
 %attr(755,root,root) %{_bindir}/hpijs
-%docdir %{_docdir}/hpijs-%{version}
-%doc %{_docdir}/hpijs-%{version}/hpijs_readme.html
-%doc %{_docdir}/hpijs-%{version}/printtool*.jpg
-%doc %{_docdir}/hpijs-%{version}/gs_apdk.jpg
-%doc %{_docdir}/hpijs-%{version}/printerdb_append
