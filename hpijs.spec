@@ -33,7 +33,7 @@ jako sterownik dla drukarek atramentowych DeskJet.
 rm -f missing
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 CXX=%{__cc}; export CXX
 CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
 %configure
