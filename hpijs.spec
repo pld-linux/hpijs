@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_bindir}/hpijs
+%attr(755,root,root) %{_bindir}/hpijs
 %docdir %{_docdir}/hpijs-%{version}
 %doc %{_docdir}/hpijs-%{version}/hpijs_readme.html
 %doc %{_docdir}/hpijs-%{version}/printtool*.jpg
