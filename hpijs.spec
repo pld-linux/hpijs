@@ -3,11 +3,11 @@ Summary:	HP Inkjet Server
 Name:		hpijs
 Version:	0.97
 Release:	1
-Copyright:	BSD (HP Products Only)
+License:	BSD (HP Products Only)
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
-Source0:	http://hpinkjet.sourceforge.net/hpijs%{version}.tar.gz
+Source0:	http://hpinkjet.sourceforge.net/%{name}%{version}.tar.gz
 URL:		http://hpinkjet.sourceforge.net
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -18,10 +18,10 @@ Conflicts:	ghostscript <= 7.00-3
 %define		_docdir		%{_prefix}/share/doc
 
 %description
-The Hewlett-Packard Inkjet Server is a raster-to-pcl server 
-or coprocess based on the Hewlett Packard Appliance Printing 
-Development Kit at http://hpapdk.com. 
-The server is used with Ghostscript as deskjet printer driver.
+The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
+coprocess based on the Hewlett Packard Appliance Printing Development
+Kit at http://hpapdk.com. The server is used with Ghostscript as
+deskjet printer driver.
 
 %prep
 %setup -q -n hpijs%{version}
