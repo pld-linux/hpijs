@@ -11,7 +11,7 @@ Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Conflicts:	ghostscript <= 7.00-3 
+Conflicts:	ghostscript <= 7.00-3
 
 %description
 The Hewlett-Packard Inkjet Server is a raster-to-pcl server or
@@ -42,10 +42,10 @@ CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make install \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%clean 
+%clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
