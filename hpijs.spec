@@ -2,9 +2,9 @@ Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
 Version:	1.1
-Release:	1
+Release:	2
 License:	BSD
-Group:		Applications/Graphics
+Group:		Applications/System
 Source0:	http://belnet.dl.sourceforge.net/sourceforge/hpinkjet/%{name}-%{version}.tar.gz
 URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
@@ -46,8 +46,7 @@ CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
