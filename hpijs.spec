@@ -1,4 +1,3 @@
-#
 Summary:	HP Inkjet Server
 Name:		hpijs
 Version:	0.97
@@ -8,7 +7,7 @@ Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
 Group(pl):	Aplikacje/Grafika
 Source0:	http://hpinkjet.sourceforge.net/%{name}%{version}.tar.gz
-URL:		http://hpinkjet.sourceforge.net
+URL:		http://hpinkjet.sourceforge.net/
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3 
@@ -31,8 +30,7 @@ deskjet printer driver.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
-install -d $RPM_BUILD_ROOT%{_docdir}/hpijs-%{version}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_docdir}/hpijs-%{version}}
 
 install hpijs $RPM_BUILD_ROOT%{_bindir}
 install hpijs_readme.html $RPM_BUILD_ROOT%{_docdir}/hpijs-%{version}
