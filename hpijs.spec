@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _without_cups		- without CUPS support
+%bcond_without  cups	# without CUPS support
 #
 Summary:	HP Inkjet Server
 Summary(pl):	Serwer dla drukarek HP Inkjet
@@ -15,7 +15,7 @@ URL:		http://hpinkjet.sourceforge.net/
 Patch0:		%{name}-ac_fixes.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{!?_without_cups:BuildRequires:	cups-devel}
+%{?with_cups:BuildRequires:	cups-devel}
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Conflicts:	ghostscript <= 7.00-3
@@ -25,7 +25,7 @@ Conflicts:	ghostscript <= 7.00-3
 %define		__cxx		"%{__cc}"
 %endif
 
-%if 0%{!?_without_cups:1}
+%if %{with cups}
 %define 	_cupsdir 	%(cups-config --datadir)
 %define		_cupsppddir	%{_cupsdir}/model
 %endif
@@ -67,12 +67,12 @@ Baza danych PPD dla drukarek Hewlett Packard.
 CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
 %configure \
 	--enable-foomatic-install \
-	%{?_without_cups:--disable-cups-install}
+	%{!?with_cups:--disable-cups-install}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%if 0%{!?_without_cups:1}
+%if %{with cups}
 install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 	$RPM_BUILD_ROOT$(cups-config --serverbin)/filter
 %endif
@@ -80,7 +80,7 @@ install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%if 0%{!?_without_cups:1}
+%if %{with cups}
 rm -f $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
 mv $RPM_BUILD_ROOT{%{_datadir}/ppd/HP/*,%{_cupsppddir}}
 %endif
@@ -93,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc hpijs_readme.html
 %attr(755,root,root) %{_bindir}/hpijs
 
-%if 0%{!?_without_cups:1}
+%if %{with cups}
 %files ppd
 %defattr(644,root,root,755)
 %{_cupsppddir}/*
