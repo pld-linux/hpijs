@@ -49,7 +49,7 @@ Summary(pl):	Baza danych PPD dla drukarek Hewlett Packard
 Group:		Applications/System
 # to be changed, what owns that dir???
 Obsoletes:	hpijs-foomatic
-Requires: 	cups
+Requires:	cups
 
 %description ppd
 PPD database for Hewlett Packard printers.
