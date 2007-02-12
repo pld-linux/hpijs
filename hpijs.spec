@@ -3,7 +3,7 @@
 %bcond_without	cups	# without CUPS support
 #
 Summary:	HP Inkjet Server
-Summary(pl):	Serwer dla drukarek HP Inkjet
+Summary(pl.UTF-8):   Serwer dla drukarek HP Inkjet
 Name:		hpijs
 Version:	2.1.4
 Release:	1
@@ -31,15 +31,15 @@ coprocess based on the Hewlett Packard Appliance Printing Development
 Kit at http://hpapdk.com/. The server is used with Ghostscript as
 deskjet printer driver.
 
-%description -l pl
+%description -l pl.UTF-8
 Serwer Hewlett-Packard Inkjet jest serwerem raster-do-pcl lub jako
 koproces bazowany na Hewlett Packard Appliance Printing Development
-Kit z http://hpapdk.com/. Serwer jest uøywany wraz z Ghostscriptem
+Kit z http://hpapdk.com/. Serwer jest u≈ºywany wraz z Ghostscriptem
 jako sterownik dla drukarek atramentowych DeskJet.
 
 %package ppd
 Summary:	PPD database for Hewlett Packard printers
-Summary(pl):	Baza danych PPD dla drukarek Hewlett Packard
+Summary(pl.UTF-8):   Baza danych PPD dla drukarek Hewlett Packard
 Group:		Applications/System
 Requires:	cups
 Obsoletes:	hpijs-foomatic
@@ -47,7 +47,7 @@ Obsoletes:	hpijs-foomatic
 %description ppd
 PPD database for Hewlett Packard printers.
 
-%description ppd -l pl
+%description ppd -l pl.UTF-8
 Baza danych PPD dla drukarek Hewlett Packard.
 
 %prep
