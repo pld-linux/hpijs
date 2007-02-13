@@ -3,7 +3,7 @@
 %bcond_without	cups	# without CUPS support
 #
 Summary:	HP Inkjet Server
-Summary(pl.UTF-8):   Serwer dla drukarek HP Inkjet
+Summary(pl.UTF-8):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
 Version:	2.1.4
 Release:	1
@@ -39,7 +39,7 @@ jako sterownik dla drukarek atramentowych DeskJet.
 
 %package ppd
 Summary:	PPD database for Hewlett Packard printers
-Summary(pl.UTF-8):   Baza danych PPD dla drukarek Hewlett Packard
+Summary(pl.UTF-8):	Baza danych PPD dla drukarek Hewlett Packard
 Group:		Applications/System
 Requires:	cups
 Obsoletes:	hpijs-foomatic
