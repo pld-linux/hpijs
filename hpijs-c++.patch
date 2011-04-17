@@ -1,0 +1,22 @@
+--- hpijs-2.1.4/registry.cpp.orig	2005-08-22 20:47:00.000000000 +0200
++++ hpijs-2.1.4/registry.cpp	2011-04-17 10:28:12.976963265 +0200
+@@ -246,7 +246,7 @@
+             device = eDJ3320;
+             match = TRUE;
+         }
+-		char	*cmdStr = strstr ((const char *) DevIDBuffer+2, "CMD:");
++		const char *cmdStr = strstr ((const char *) DevIDBuffer+2, "CMD:");
+ 		if (!cmdStr)
+ 		{
+ 			cmdStr = strstr ((const char *) DevIDBuffer+2, "COMMAND SET:");
+--- hpijs-2.1.4/dj3320.cpp.orig	2005-08-22 20:47:00.000000000 +0200
++++ hpijs-2.1.4/dj3320.cpp	2011-04-17 10:34:46.600309787 +0200
+@@ -400,7 +400,7 @@
+ {
+     DRIVER_ERROR err = NO_ERROR;
+     BYTE byDevIDBuffer[DevIDBuffSize];
+-    char *pcStr = NULL;
++    const char *pcStr = NULL;
+     BYTE byStatus1, byStatus2;
+ 
+     memset(byDevIDBuffer, 0, sizeof(byDevIDBuffer));

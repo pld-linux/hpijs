@@ -6,11 +6,12 @@ Summary:	HP Inkjet Server
 Summary(pl.UTF-8):	Serwer dla drukarek HP Inkjet
 Name:		hpijs
 Version:	2.1.4
-Release:	3
+Release:	4
 License:	BSD
 Group:		Applications/System
-Source0:	http://dl.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/hpinkjet/%{name}-%{version}.tar.gz
 # Source0-md5:	7f943ad155c50191a5facdfc2a083110
+Patch0:		%{name}-c++.patch
 URL:		http://hpinkjet.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -52,12 +53,12 @@ Baza danych PPD dla drukarek Hewlett Packard.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-CXXFLAGS="%{rpmcflags} -fno-exceptions -fno-rtti"
 %configure \
 	--enable-foomatic-install \
 	%{!?with_cups:--disable-cups-install}
@@ -74,7 +75,7 @@ install -d $RPM_BUILD_ROOT$(cups-config --datadir)/model \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %if %{with cups}
-rm -f $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
+%{__rm} $RPM_BUILD_ROOT%{_cupsppddir}/foomatic-ppds
 mv $RPM_BUILD_ROOT{%{_datadir}/ppd/HP/*,%{_cupsppddir}}
 %endif
 
@@ -89,5 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with cups}
 %files ppd
 %defattr(644,root,root,755)
-%{_cupsppddir}/*
+%{_cupsppddir}/HP-*.ppd.gz
+%{_cupsppddir}/HP_*.ppd.gz
+%{_cupsppddir}/hp_*.ppd.gz
 %endif
