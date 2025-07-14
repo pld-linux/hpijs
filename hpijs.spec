@@ -53,7 +53,7 @@ Baza danych PPD dla drukarek Hewlett Packard.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__aclocal}
