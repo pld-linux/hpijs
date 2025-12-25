@@ -43,7 +43,7 @@ Summary:	PPD database for Hewlett Packard printers
 Summary(pl.UTF-8):	Baza danych PPD dla drukarek Hewlett Packard
 Group:		Applications/System
 Requires:	cups
-Obsoletes:	hpijs-foomatic
+Obsoletes:	hpijs-foomatic < 1.5
 
 %description ppd
 PPD database for Hewlett Packard printers.
